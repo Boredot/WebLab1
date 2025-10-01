@@ -13,13 +13,78 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
     margin-bottom: 30px;
 }
 
 header h1 {
-    flex-grow: 1;
+    margin: 0 auto;
+    font-size: 2.2em;
+    color: white;
+    background:#007bff;
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
     text-align: center;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    margin-top: 8px;
+}
+
+button:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.add-to-cart-btn {
+    background: #28a745;
+}
+
+.add-to-cart-btn:hover {
+    background: #218838;
+}
+
+.remove-item {
+    background: #dc3545;
+    padding: 6px 12px;
+    font-size: 0.85em;
+}
+
+.remove-item:hover {
+    background: #c82333;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+}
+
+footer p {
+    margin: 5px 0;
 }
 
 .product-grid {
@@ -47,26 +112,30 @@ header h1 {
     font-size: 1.1em;
 }
 
-.product-card p {
-    margin: 10px 0;
-    font-weight: bold;
-}
-
 .pagination {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .pagination button {
     padding: 8px 12px;
     cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #000;
+    border-radius: 4px;
+}
+
+.pagination button:hover {
+    background-color: #f0f0f0;
 }
 
 .pagination button.active {
-    background: #084688;
+    background: #007bff;
     color: white;
+    border-color: #007bff;
 }
 
 .modal {
@@ -78,6 +147,8 @@ header h1 {
     height: 100%;
     background: rgba(0,0,0,0.5);
     z-index: 1000;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-content {
@@ -88,6 +159,15 @@ header h1 {
     padding: 20px;
     border-radius: 8px;
     position: relative;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    margin: 10px 0;
 }
 
 .close {
@@ -103,6 +183,12 @@ header h1 {
     width: 100%;
     margin: 10px 0;
     padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#order-form button {
+    margin-top: 15px;
 }
 
 @media (max-width: 768px) {
