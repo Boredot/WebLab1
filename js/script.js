@@ -6,9 +6,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtns = document.querySelectorAll('.close');
     const checkoutBtn = document.getElementById('checkout-btn');
     const orderForm = document.getElementById('order-form');
-    const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
+    const productGrid = document.getElementById('product-grid');
+
+    const products = [
+        { id: 1, name: 'IEM 1', price: 10 },
+        { id: 2, name: 'IEM 2', price: 15 },
+        { id: 3, name: 'IEM 3', price: 20 },
+        { id: 4, name: 'IEM 4', price: 12 },
+        { id: 5, name: 'IEM 5', price: 18 },
+        { id: 6, name: 'IEM 6', price: 25 },
+    ];
+
+    function renderProducts() {
+        productGrid.innerHTML = '';
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>Цена: ${product.price} usd</p>
+                <button class="add-to-cart-btn" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">
+                    Add to cart
+                </button>
+            `;
+            productGrid.appendChild(card);
+        });
+    }
+
+    productGrid.addEventListener('click', e => {
+        if (e.target.classList.contains('add-to-cart-btn')) {
+            const id = e.target.dataset.id;
+            const name = e.target.dataset.name;
+            const price = +e.target.dataset.price;
+
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.quantity++;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            updateCart();
+        }
+    });
 
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -50,22 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
 
-    addToCartBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const id = btn.dataset.id;
-            const name = btn.dataset.name;
-            const price = +btn.dataset.price;
-
-            const existing = cart.find(item => item.id === id);
-            if (existing) {
-                existing.quantity++;
-            } else {
-                cart.push({ id, name, price, quantity: 1 });
-            }
-            updateCart();
-        });
-    });
-
     cartBtn.addEventListener('click', () => {
         cartModal.style.display = 'block';
     });
@@ -92,5 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
         orderForm.reset();
     });
 
+    renderProducts();
     updateCart();
 });
