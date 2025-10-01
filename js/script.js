@@ -12,12 +12,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const pagination = document.getElementById('pagination');
 
     const products = [
-        { id: 1, name: 'IEM 1', price: 10 },
-        { id: 2, name: 'IEM 2', price: 15 },
-        { id: 3, name: 'IEM 3', price: 20 },
-        { id: 4, name: 'IEM 4', price: 12 },
-        { id: 5, name: 'IEM 5', price: 18 },
-        { id: 6, name: 'IEM 6', price: 25 },
+        { id: 1, name: 'IEM 1', price: 10, image: 'images/product.jpg' },
+        { id: 2, name: 'IEM 2', price: 15, image: 'images/product.jpg'  },
+        { id: 3, name: 'IEM 3', price: 20, image: 'images/product.jpg'  },
+        { id: 4, name: 'IEM 4', price: 12, image: 'images/product.jpg'  },
+        { id: 5, name: 'IEM 5', price: 18, image: 'images/product.jpg'  },
+        { id: 6, name: 'IEM 6', price: 25, image: 'images/product.jpg'  },
+        { id: 7, name: 'IEM 7', price: 10, image: 'images/product.jpg' },
+        { id: 8, name: 'IEM 8', price: 15, image: 'images/product.jpg'  },
+        { id: 9, name: 'IEM 9', price: 20, image: 'images/product.jpg'  },
+        { id: 10, name: 'IEM 10', price: 12, image: 'images/product.jpg'  },
+        { id: 11, name: 'IEM 11', price: 18, image: 'images/product.jpg'  },
+        { id: 12, name: 'IEM 12', price: 25, image: 'images/product.jpg'  },
+        { id: 13, name: 'IEM 13', price: 10, image: 'images/product.jpg' },
+        { id: 14, name: 'IEM 14', price: 15, image: 'images/product.jpg'  },
+        { id: 15, name: 'IEM 15', price: 20, image: 'images/product.jpg'  },
+        { id: 16, name: 'IEM 16', price: 12, image: 'images/product.jpg'  },
+        { id: 17, name: 'IEM 17', price: 18, image: 'images/product.jpg'  },
+        { id: 18, name: 'IEM 18', price: 25, image: 'images/product.jpg'  },
+        { id: 19, name: 'IEM 19', price: 10, image: 'images/product.jpg' },
+        { id: 20, name: 'IEM 20', price: 15, image: 'images/product.jpg'  },
+        { id: 21, name: 'IEM 21', price: 20, image: 'images/product.jpg'  },
+        { id: 22, name: 'IEM 22', price: 12, image: 'images/product.jpg'  },
+        { id: 23, name: 'IEM 23', price: 18, image: 'images/product.jpg'  },
+        { id: 24, name: 'IEM 24', price: 25, image: 'images/product.jpg'  }
     ];
 
     let currentPage = 1;
@@ -33,8 +51,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'product-card';
             card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
-                <p>Цена: ${product.price} usd</p>
+                <p>Price: ${product.price} usd</p>
                 <button class="add-to-cart-btn" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">
                     Add to cart
                 </button>
