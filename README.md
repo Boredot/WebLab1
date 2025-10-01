@@ -9,7 +9,7 @@ A web store, where a customer could choose a product, add it to their cart and c
 
 https://boredot.github.io/WebLab1/
 
-## Realised features
+## Implemented features
 
 - modal windows for cart, order and a thank-you message
 - clean product cards with images
