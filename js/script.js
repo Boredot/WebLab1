@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
     const productGrid = document.getElementById('product-grid');
+    const pagination = document.getElementById('pagination');
 
     const products = [
         { id: 1, name: 'IEM 1', price: 10 },
@@ -19,9 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 6, name: 'IEM 6', price: 25 },
     ];
 
-    function renderProducts() {
+    let currentPage = 1;
+    const itemsPerPage = 16;
+
+    function renderPage() {
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const pageProducts = products.slice(start, end);
+
         productGrid.innerHTML = '';
-        products.forEach(product => {
+        pageProducts.forEach(product => {
             const card = document.createElement('div');
             card.className = 'product-card';
             card.innerHTML = `
@@ -33,6 +41,25 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
             productGrid.appendChild(card);
         });
+
+        renderPagination();
+    }
+
+    function renderPagination() {
+        const totalPages = Math.ceil(products.length / itemsPerPage);
+        pagination.innerHTML = '';
+
+        for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement('button');
+            btn.textContent = i;
+            btn.dataset.page = i;
+            if (i === currentPage) btn.classList.add('active');
+            btn.addEventListener('click', () => {
+                currentPage = i;
+                renderPage();
+            });
+            pagination.appendChild(btn);
+        }
     }
 
     productGrid.addEventListener('click', e => {
@@ -117,6 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
         orderForm.reset();
     });
 
-    renderProducts();
+    renderPage();
     updateCart();
 });
