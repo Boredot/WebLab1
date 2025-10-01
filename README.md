@@ -5,6 +5,10 @@
 
 A web store, where a customer could choose a product, add it to their cart and checkout.
 
+## Deploy!
+
+https://boredot.github.io/WebLab1/
+
 ## Realised features
 
 - modal windows for cart, order and a thank-you message
@@ -16,3 +20,7 @@ A web store, where a customer could choose a product, add it to their cart and c
 - idk what to write here tbh, just look at the website
 
 > disclaimer: i kinda forgot about this task and did everything on the last day, hopefully it's not too bad
+
+## Personal info
+
+Shevchenko S., 409886, K3344
